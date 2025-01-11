@@ -63,3 +63,4 @@ group :test do
 end
 
 gem "dotenv-rails", groups: [ :development, :test ]
+gem 'pg', '~> 1.5', '>= 1.5.9'
