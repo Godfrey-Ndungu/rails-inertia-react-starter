@@ -1,24 +1,27 @@
-# README
+# Rails Inertia React Starter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+**Project Name** is a Ruby on Rails application built with Ruby `3.3.3` and Rails `8.0.1`. This application [insert a brief description of what your project does].
 
-* Ruby version
+---
 
-* System dependencies
+## Prerequisites
 
-* Configuration
+Ensure you have the following installed on your machine:
 
-* Database creation
+- **Ruby**: `3.3.3`  
 
-* Database initialization
+  Install Ruby using [rbenv](https://github.com/rbenv/rbenv) or [rvm](https://rvm.io/):
 
-* How to run the test suite
+  ```bash
+  rbenv install 3.3.3
+  rbenv global 3.3.3
+  ```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- **Rails**: `8.0.1`  
+  Install Rails using:
+  
+  ```bash
+  gem install rails -v 8.0.1
+  ```
