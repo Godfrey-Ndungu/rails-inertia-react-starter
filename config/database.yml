@@ -1,41 +1,57 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
+# Default configuration for PostgreSQL
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  timeout: 20000
+  host: <%= ENV.fetch("DB_HOST", "localhost") %>
+  port: <%= ENV.fetch("DB_PORT", 5432) %>
 
 development:
   <<: *default
-  database: storage/development.sqlite3
+  database: <%= ENV.fetch("DEV_DATABASE", "my_app_development") %>
+  username: <%= ENV.fetch("DEV_DB_USERNAME", "dev_user") %>
+  password: <%= ENV.fetch("DEV_DB_PASSWORD", "dev_password") %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: storage/test.sqlite3
+  database: <%= ENV.fetch("TEST_DATABASE", "my_app_test") %>
+  username: <%= ENV.fetch("TEST_DB_USERNAME", "test_user") %>
+  password: <%= ENV.fetch("TEST_DB_PASSWORD", "test_password") %>
 
-
-# Store production database in the storage/ directory, which by default
-# is mounted as a persistent Docker volume in config/deploy.yml.
 production:
   primary:
     <<: *default
-    database: storage/production.sqlite3
+    database: <%= ENV.fetch("PROD_PRIMARY_DATABASE", "my_app_production") %>
+    username: <%= ENV.fetch("PROD_DB_USERNAME", "prod_user") %>
+    password: <%= ENV.fetch("PROD_DB_PASSWORD", "prod_password") %>
+    host: <%= ENV.fetch("PROD_DB_HOST", "primary-db-host") %>
+
+  primary_replica:
+    <<: *default
+    database: <%= ENV.fetch("PROD_REPLICA_DATABASE", "my_app_production_replica") %>
+    username: <%= ENV.fetch("PROD_REPLICA_USERNAME", "prod_readonly_user") %>
+    password: <%= ENV.fetch("PROD_REPLICA_PASSWORD", "prod_readonly_password") %>
+    host: <%= ENV.fetch("PROD_REPLICA_HOST", "replica-db-host") %>
+    replica: true
+
   cache:
     <<: *default
-    database: storage/production_cache.sqlite3
+    database: <%= ENV.fetch("PROD_CACHE_DATABASE", "my_app_cache") %>
+    username: <%= ENV.fetch("PROD_DB_USERNAME", "prod_user") %>
+    password: <%= ENV.fetch("PROD_DB_PASSWORD", "prod_password") %>
     migrations_paths: db/cache_migrate
+
   queue:
     <<: *default
-    database: storage/production_queue.sqlite3
+    database: <%= ENV.fetch("PROD_QUEUE_DATABASE", "my_app_queue") %>
+    username: <%= ENV.fetch("PROD_DB_USERNAME", "prod_user") %>
+    password: <%= ENV.fetch("PROD_DB_PASSWORD", "prod_password") %>
     migrations_paths: db/queue_migrate
+
   cable:
     <<: *default
-    database: storage/production_cable.sqlite3
+    database: <%= ENV.fetch("PROD_CABLE_DATABASE", "my_app_cable") %>
+    username: <%= ENV.fetch("PROD_DB_USERNAME", "prod_user") %>
+    password: <%= ENV.fetch("PROD_DB_PASSWORD", "prod_password") %>
     migrations_paths: db/cable_migrate
