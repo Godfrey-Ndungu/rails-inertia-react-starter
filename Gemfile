@@ -64,3 +64,7 @@ end
 
 gem "dotenv-rails", groups: [ :development, :test ]
 gem "pg", "~> 1.5", ">= 1.5.9"
+
+gem "js-routes"
+gem 'vite_rails'
+gem 'inertia_rails'
