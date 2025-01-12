@@ -25,3 +25,10 @@ Ensure you have the following installed on your machine:
   ```bash
   gem install rails -v 8.0.1
   ```
+
+## Features
+
+1. **PostgreSQL Support with Replica DB** - The application is configured to support a primary and replica PostgreSQL database setup    for scalability and improved read performance
+2. **js-routes** - https://github.com/railsware/js-routes?tab=readme-ov-file#quick-start
+3. **vite-rails** - Allows you to use Vite to power the frontend of your Rails app
+4. **
