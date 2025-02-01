@@ -49,7 +49,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'annotate'
+  gem "annotate"
   gem "rubocop", "~> 1.0"
   # RuboCop extension for Rails-specific style checks
   gem "rubocop-rails", "~> 2.0"
@@ -69,7 +69,18 @@ gem "js-routes"
 gem "vite_rails"
 gem "inertia_rails"
 # For initializing objects with dry-initializer
-gem 'dry-initializer'
+gem "dry-initializer"
 
 # For type definitions with dry-types
-gem 'dry-types'
+gem "dry-types"
+
+gem "sidekiq", "~> 7.3"
+gem "kaminari"
+gem "faraday"
+# redis
+gem "redis"
+gem "hiredis-client"
+gem "connection_pool"
+
+gem "devise", "~> 4.9"
+gem "aws-sdk-s3", require: false
