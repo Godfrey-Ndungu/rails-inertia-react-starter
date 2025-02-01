@@ -43,28 +43,33 @@ gem "thruster", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-end
-
-group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'annotate'
+  gem "rubocop", "~> 1.0"
+  # RuboCop extension for Rails-specific style checks
+  gem "rubocop-rails", "~> 2.0"
+  gem "dotenv-rails"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "rspec-rails"
 end
 
-gem "dotenv-rails", groups: [ :development, :test ]
-gem "pg", "~> 1.5", ">= 1.5.9"
+gem "pg"
 
 gem "js-routes"
 gem "vite_rails"
 gem "inertia_rails"
+# For initializing objects with dry-initializer
+gem 'dry-initializer'
+
+# For type definitions with dry-types
+gem 'dry-types'
